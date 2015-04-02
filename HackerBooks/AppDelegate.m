@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "ADMBook.h"
+#import "ADMBookViewController.h"
+#import "ADMLibrary.h"
+#import "ADMLibraryTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +21,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
+    //Remember this is initialized with the json dictionary
+    ADMLibrary *library = [[ADMLibrary alloc] init];
+    ADMLibraryTableViewController *libVC = [[ADMLibraryTableViewController alloc] initWithModel:library style:UITableViewStylePlain];
+    
+    ADMBookViewController *bVC = [[ADMBookViewController alloc ] initWithModel:[library firstBook]];
+    
+    //Navigation controllers
+    UINavigationController *lNav = [UINavigationController new];
+    UINavigationController *bNav = [UINavigationController new];
+    [lNav pushViewController:libVC animated:NO];
+    [bNav pushViewController:bVC animated:NO];
+    
+    
+    UISplitViewController *sVC = [UISplitViewController new];
+    sVC.viewControllers = @[lNav,bNav];
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+
+    self.window.rootViewController = sVC;
+    
     return YES;
 }
 

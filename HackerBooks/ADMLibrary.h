@@ -11,10 +11,18 @@
 
 @interface ADMLibrary : NSObject
 
+
+
 -(NSUInteger) bookCount;
 -(NSArray *)  tags;
 -(NSUInteger) bookCountForTag:(NSString*)tag;
 -(NSArray*)   booksForTag: (NSString*)tag;
 -(ADMBook*)   bookForTag:(NSString*)tag atIndex:(NSUInteger) index;
+
+-(NSUInteger) bookCountForIndex:(NSUInteger) index;
+-(NSString *) tagByPosition:(NSUInteger)index;
+
+-(id) firstBook;
+
 
 @end

@@ -14,6 +14,10 @@
 		D32A01601ACB617800016DFC /* HackerBooksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A015F1ACB617800016DFC /* HackerBooksTests.m */; };
 		D32A016C1ACB61CE00016DFC /* ADMBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A016B1ACB61CE00016DFC /* ADMBook.m */; };
 		D32A016F1ACB64D600016DFC /* ADMLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A016E1ACB64D600016DFC /* ADMLibrary.m */; };
+		D32A01731ACC618B00016DFC /* ADMBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A01711ACC618B00016DFC /* ADMBookViewController.m */; };
+		D32A01741ACC618B00016DFC /* ADMBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D32A01721ACC618B00016DFC /* ADMBookViewController.xib */; };
+		D32A017E1ACC864900016DFC /* ADMLibraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A017C1ACC864900016DFC /* ADMLibraryTableViewController.m */; };
+		D32A017F1ACC864900016DFC /* ADMLibraryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D32A017D1ACC864900016DFC /* ADMLibraryTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +45,12 @@
 		D32A016B1ACB61CE00016DFC /* ADMBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMBook.m; sourceTree = "<group>"; };
 		D32A016D1ACB64D600016DFC /* ADMLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMLibrary.h; sourceTree = "<group>"; };
 		D32A016E1ACB64D600016DFC /* ADMLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMLibrary.m; sourceTree = "<group>"; };
+		D32A01701ACC618B00016DFC /* ADMBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMBookViewController.h; sourceTree = "<group>"; };
+		D32A01711ACC618B00016DFC /* ADMBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMBookViewController.m; sourceTree = "<group>"; };
+		D32A01721ACC618B00016DFC /* ADMBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADMBookViewController.xib; sourceTree = "<group>"; };
+		D32A017B1ACC864900016DFC /* ADMLibraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMLibraryTableViewController.h; sourceTree = "<group>"; };
+		D32A017C1ACC864900016DFC /* ADMLibraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMLibraryTableViewController.m; sourceTree = "<group>"; };
+		D32A017D1ACC864900016DFC /* ADMLibraryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADMLibraryTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 		D32A01481ACB617800016DFC /* HackerBooks */ = {
 			isa = PBXGroup;
 			children = (
+				D32A01751ACC619400016DFC /* Controllers */,
 				D32A01691ACB61AB00016DFC /* Models */,
 				D32A014D1ACB617800016DFC /* AppDelegate.h */,
 				D32A014E1ACB617800016DFC /* AppDelegate.m */,
@@ -127,6 +138,19 @@
 				D32A016E1ACB64D600016DFC /* ADMLibrary.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		D32A01751ACC619400016DFC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D32A01701ACC618B00016DFC /* ADMBookViewController.h */,
+				D32A01711ACC618B00016DFC /* ADMBookViewController.m */,
+				D32A01721ACC618B00016DFC /* ADMBookViewController.xib */,
+				D32A017B1ACC864900016DFC /* ADMLibraryTableViewController.h */,
+				D32A017C1ACC864900016DFC /* ADMLibraryTableViewController.m */,
+				D32A017D1ACC864900016DFC /* ADMLibraryTableViewController.xib */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,8 +233,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D32A017F1ACC864900016DFC /* ADMLibraryTableViewController.xib in Resources */,
 				D32A01541ACB617800016DFC /* LaunchScreen.xib in Resources */,
 				D32A01511ACB617800016DFC /* Images.xcassets in Resources */,
+				D32A01741ACC618B00016DFC /* ADMBookViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +257,8 @@
 				D32A014F1ACB617800016DFC /* AppDelegate.m in Sources */,
 				D32A016C1ACB61CE00016DFC /* ADMBook.m in Sources */,
 				D32A016F1ACB64D600016DFC /* ADMLibrary.m in Sources */,
+				D32A01731ACC618B00016DFC /* ADMBookViewController.m in Sources */,
+				D32A017E1ACC864900016DFC /* ADMLibraryTableViewController.m in Sources */,
 				D32A014C1ACB617800016DFC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +378,7 @@
 				INFOPLIST_FILE = HackerBooks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -360,6 +389,7 @@
 				INFOPLIST_FILE = HackerBooks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -416,6 +446,7 @@
 				D32A01651ACB617800016DFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D32A01661ACB617800016DFC /* Build configuration list for PBXNativeTarget "HackerBooksTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +455,7 @@
 				D32A01681ACB617800016DFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
