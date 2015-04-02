@@ -51,6 +51,21 @@
     self.coverView.image = self.model.photo;
 }
 
+#pragma mark UISplitViewDelegate
+-(void) splitViewController:(UISplitViewController *)svc willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode{
+    
+    //Find out if the left table is visible
+    if(displayMode == UISplitViewControllerDisplayModeAllVisible){
+        
+        //We are in vertical mode (all visible,not UITable)
+        self.navigationItem.leftBarButtonItem = svc.displayModeButtonItem;
+    }else{
+        //we are in landscape, so hide the button
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+}
+
+#pragma mark ADMLibraryDelegate
 -(void) libraryTableViewController:(ADMLibraryTableViewController *)lVC
                      didSelectBook:(ADMBook *) book{
     
@@ -59,5 +74,6 @@
     //sysncronize view with model
     [self syncviewWithModel];
 }
+
 
 @end

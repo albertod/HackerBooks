@@ -39,6 +39,10 @@
     UISplitViewController *sVC = [UISplitViewController new];
     sVC.viewControllers = @[lNav,bNav];
     
+    //Set delegates
+    sVC.delegate = bVC;
+    libVC.delegate = bVC;
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

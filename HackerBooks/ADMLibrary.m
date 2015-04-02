@@ -49,7 +49,7 @@
                     
                     NSMutableArray *booksForKey = [NSMutableArray new];
                     //Check our dictionary of arrays for entries
-                    if([self.library objectForKey:booksForKey] != nil)
+                    if([self.library objectForKey:tagOfBook] != nil)
                     {
                         //We have alredy books under that
                         //Assign out mutable array to the entry of the dictionary
@@ -127,7 +127,7 @@
 
 -(id)firstBook{
     
-    return [self.library objectForKey:@"Parsing Techniques"];
+    return [[self.library objectForKey:[self.tagsArray objectAtIndex:0]] objectAtIndex:0];
 }
 
 -(NSUInteger) bookCountForIndex:(NSUInteger) index{
