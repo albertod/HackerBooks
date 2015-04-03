@@ -118,7 +118,7 @@
         return nil;
     }
     
-    if([askedBook count] < index){
+    if([askedBook count] <= index){
         return nil; //index is over the capacity of the books with the especified tag
     }
     

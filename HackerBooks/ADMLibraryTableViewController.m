@@ -73,7 +73,7 @@
     static NSString *CellIdentifier = @"BookCell";
     
     //Lets find out which book it is
-    ADMBook *book = [self.model bookForTag:[[self.model tags]objectAtIndex:indexPath.section] atIndex:indexPath.row];
+    ADMBook *book = [self.model bookForTag:[self.model tagByPosition:indexPath.section] atIndex:indexPath.row ];
     
     
     // Creamos una celda
