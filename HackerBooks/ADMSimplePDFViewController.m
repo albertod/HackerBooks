@@ -29,6 +29,15 @@
     return  self;
 }
 
+#pragma mark -NotificationUtil
+-(void) bookDidChange:(NSNotification *) notification{
+    
+    NSDictionary *dict = [notification userInfo];
+    ADMBook *book = [dict objectForKey:BOOK_KEY];
+    
+    self.model = book;
+    [self.pdfViewer loadData:self.model.pdf MIMEType:@"application/pdf" textEncodingName:nil baseURL:nil];
+}
 
 -(void) viewWillAppear:(BOOL)animated{
     
@@ -39,15 +48,13 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.pdfViewer.delegate = self;
     self.title = self.model.title;
-    NSURL *pdfURL = self.model.pdfURL;
-    //NSURLRequest *request = [NSURLRequest requestWithURL:pdfURL];
-    NSData *pdf = [[NSData alloc] initWithContentsOfURL:pdfURL];
-    [self.pdfViewer loadData:pdf MIMEType:@"application/pdf" textEncodingName:nil baseURL:nil];
+ 
+    [self.pdfViewer loadData:self.model.pdf MIMEType:@"application/pdf" textEncodingName:nil baseURL:nil];
 
     //Stay alert for notifications
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
-               selector:@selector(bookDidChange)
+               selector:@selector(bookDidChange:)
                    name:NEW_BOOK_NOTIFICATION_NAME
                  object:nil];
     
@@ -57,16 +64,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) bookDidChange:(NSNotification *) notification{
-    
-    NSDictionary *dict = [notification userInfo];
-    ADMBook *book = [dict objectForKey:BOOK_KEY];
-    
-    self.model = book;
-    NSURL *pdfURL = self.model.pdfURL;
-    NSData *pdf = [[NSData alloc] initWithContentsOfURL:pdfURL];
-    [self.pdfViewer loadData:pdf MIMEType:@"application/pdf" textEncodingName:nil baseURL:nil];
-}
 
 -(void) viewWillDisappear:(BOOL)animated{
     

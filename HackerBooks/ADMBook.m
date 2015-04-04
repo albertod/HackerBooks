@@ -11,6 +11,7 @@
 @implementation ADMBook
 
 @synthesize photo = _photo;
+@synthesize pdf   = _pdf;
 
 
 -(id) initWithTitle:(NSString *)title
@@ -27,6 +28,7 @@
         _imageURL = imageURL;
         _pdfURL = pdfURL;
         _photo  = [self getCover:imageURL];
+        _pdf    = [self getPDF:pdfURL];
     }
     
     return self;
@@ -35,26 +37,46 @@
 #pragma mark - Propiedades
 -(UIImage *)getCover:(NSURL *)imageURL{
     
-//    NSError *error = nil;
-//    
-//    NSFileManager *filemanager = [NSFileManager defaultManager];
-//    NSURL *documentDirectory = [[filemanager URLsForDirectory:NSDocumentDirectory
-//                                                    inDomains:NSUserDomainMask] lastObject];
-//    
-//    NSURL *patch = [documentDirectory URLByAppendingPathComponent:[imageURL lastPathComponent]];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *documentDirectory = [[fm URLsForDirectory:NSDocumentDirectory
+                                                    inDomains:NSUserDomainMask] lastObject];
+
+    NSURL *URLPath = [documentDirectory URLByAppendingPathComponent:[imageURL lastPathComponent]];
     
     
     
-    NSData *data = [[NSData alloc] initWithContentsOfURL:imageURL];
+    NSData *data = [[NSData alloc] initWithContentsOfURL:URLPath];
     
     UIImage *image;
 
     if(data != nil){
         image = [UIImage imageWithData:data];
+    }else{
+        NSLog(@"Error Image is not in local directory");
     }
  
     return image;
     
+}
+
+-(NSData *)getPDF:(NSURL *) pdfURL{
+    
+    //Check the local directory for the PDF
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *documentDirectory = [[fm URLsForDirectory:NSDocumentDirectory
+                                           inDomains:NSUserDomainMask] lastObject];
+    
+    NSURL *URLPath = [documentDirectory URLByAppendingPathComponent:[pdfURL lastPathComponent]];
+    
+    NSData *data = [[NSData alloc] initWithContentsOfURL:URLPath];
+    
+    if(data == nil){
+         NSLog(@"Error, PDF is not in local directory");
+       
+        
+    }
+    
+    return data;
 }
 
 

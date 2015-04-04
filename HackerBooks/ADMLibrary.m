@@ -19,14 +19,30 @@
 
 -(id) init{
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://keepcodigtest.blob.core.windows.net/containerblobstest/books_readable.json"]];
-    NSURLResponse *response = [NSURLResponse new ];
-    NSError *error;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                         returningResponse:&response
-                                                     error:&error];
+    
+    //Check the local directory to see if the data has been load
+    NSUserDefaults *ld = [NSUserDefaults standardUserDefaults];
+    
+    //If enter this block, it means the app is the first time is open on the device
+    if(!([ld objectForKey:@"FIRST_TIME"])){
+        
+        //Dowload everything from the JSON soruce
+        [self downloadJSON];
+        //Mark the fyle system, so we know it already downloaded the file
+        [ld setObject:@"1" forKey:@"FIRST_TIME"];
+        //Syncronize the Local Directory (ld), so the key is saved
+        [ld synchronize];
+    }
+    
+    //Use the file manager to fetch the data
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *localURL = [[fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]; //The JSONData was the last we saved on the local directory of the sandBox
+    
+    NSData *data = [NSData dataWithContentsOfURL:localURL];
+    NSError * error;
     
     if(data != nil){
+        
         //There is no error
         NSArray *JSONObjects = [NSJSONSerialization JSONObjectWithData:data
                                                                options:kNilOptions
@@ -145,5 +161,23 @@
     return [self.tagsArray objectAtIndex:index];
 }
 
+-(void) downloadJSON{
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://keepcodigtest.blob.core.windows.net/containerblobstest/books_readable.json"]];
+    NSURLResponse *response = [NSURLResponse new ];
+    NSError *error;
+    
+    NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                         returningResponse:&response
+                                                     error:&error];
+    if(data){
+        
+        NSFileManager *fm = [NSFileManager defaultManager];
+        
+        
+    }
+    
+
+}
 
 @end
