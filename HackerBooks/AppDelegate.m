@@ -29,6 +29,7 @@
     
     ADMBookViewController *bVC = [[ADMBookViewController alloc ] initWithModel:[library firstBook]];
     
+    
     //Navigation controllers
     UINavigationController *lNav = [UINavigationController new];
     UINavigationController *bNav = [UINavigationController new];
@@ -42,7 +43,7 @@
     //Set delegates
     sVC.delegate = bVC;
     libVC.delegate = bVC;
-    
+
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

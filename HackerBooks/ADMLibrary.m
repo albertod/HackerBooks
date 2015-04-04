@@ -80,6 +80,8 @@
         NSLog(@"Error fetching the data from server %@",error.localizedDescription);
     }
     
+    //Before returining lets sort the array alphabetycally so it looks nicer :)
+    self.tagsArray = [NSMutableArray arrayWithArray:[self.tagsArray sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
     
     return self;
 
@@ -132,7 +134,10 @@
 
 -(NSUInteger) bookCountForIndex:(NSUInteger) index{
     
-    return [[self.library objectForKey:[self.tags objectAtIndex:index]]count];
+    //Check this
+    NSString *key = [self.tagsArray objectAtIndex:index];
+    
+    return [[self.library objectForKey:key] count];
 }
 
 -(NSString *) tagByPosition:(NSUInteger)index{

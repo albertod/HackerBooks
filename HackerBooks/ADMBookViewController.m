@@ -31,6 +31,7 @@
     //this it to make sure to not use all the screen if there is an imageview
     //makes space for toolbar
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.navigationController.toolbarHidden = NO;
     [self syncviewWithModel];
 }
 
@@ -48,6 +49,8 @@
     
     self.title = self.model.title;
     self.titleLabel.text = self.model.title;
+    self.authorLabel.text= [self.model.authors componentsJoinedByString:@","];
+    self.tagsLabel.text= [self.model.tags componentsJoinedByString:@","];
     self.coverView.image = self.model.photo;
 }
 
@@ -58,10 +61,11 @@
     if(displayMode == UISplitViewControllerDisplayModeAllVisible){
         
         //We are in vertical mode (all visible,not UITable)
-        self.navigationItem.leftBarButtonItem = svc.displayModeButtonItem;
+        self.navigationItem.leftBarButtonItem = nil;
+        
     }else{
         //we are in landscape, so hide the button
-        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.leftBarButtonItem = svc.displayModeButtonItem;
     }
 }
 
