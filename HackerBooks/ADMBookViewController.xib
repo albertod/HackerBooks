@@ -20,11 +20,15 @@
             <subviews>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dY9-sY-lqM">
                     <rect key="frame" x="0.0" y="980" width="768" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem title="Favorite" style="plain" id="WGu-oB-LEN"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="e9W-qz-tkz"/>
-                        <barButtonItem title="PDF" id="CPM-0H-NdH"/>
+                        <barButtonItem title="PDF" id="CPM-0H-NdH">
+                            <connections>
+                                <action selector="displayPDF:" destination="-1" id="c6X-9I-y1p"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hVy-Zf-A4c">

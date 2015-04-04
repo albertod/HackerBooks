@@ -108,7 +108,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
                                     didSelectBook:book];
     }
     
-    //Send the notifications
+    //Send the notifications because the user change the book
+    NSNotification *n = [NSNotification notificationWithName:NEW_BOOK_NOTIFICATION_NAME
+                                                            object:self
+                                                          userInfo:@{BOOK_KEY: book}];
+    
+    //post the notification
+    [[NSNotificationCenter defaultCenter]postNotification:n];
 }
 
 @end

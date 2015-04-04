@@ -11,6 +11,7 @@
 #import "ADMBookViewController.h"
 #import "ADMLibrary.h"
 #import "ADMLibraryTableViewController.h"
+#import "ADMSimplePDFViewController.h"
 
 @interface AppDelegate ()
 
@@ -46,7 +47,7 @@
 
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    [[self window] makeKeyAndVisible];
     
 
     self.window.rootViewController = sVC;

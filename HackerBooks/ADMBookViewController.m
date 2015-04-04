@@ -7,6 +7,7 @@
 //
 
 #import "ADMBookViewController.h"
+#import "ADMSimplePDFViewController.h"
 
 
 @implementation ADMBookViewController
@@ -31,7 +32,7 @@
     //this it to make sure to not use all the screen if there is an imageview
     //makes space for toolbar
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationController.toolbarHidden = NO;
+    
     [self syncviewWithModel];
 }
 
@@ -45,6 +46,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)displayPDF:(id)sender{
+    
+    ADMSimplePDFViewController *pdfVC = [[ADMSimplePDFViewController alloc]
+                                         initWithModel:self.model];
+    
+    [self.navigationController pushViewController:pdfVC animated:YES];
+    
+}
 -(void) syncviewWithModel{
     
     self.title = self.model.title;

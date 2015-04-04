@@ -9,6 +9,11 @@
 @import UIKit;
 #import "ADMLibrary.h"
 
+//For the notifications
+#define NEW_BOOK_NOTIFICATION_NAME @"newBook"
+#define BOOK_KEY @"book"
+
+
 @class ADMLibraryTableViewController;
 @protocol ADMLibraryTableViewControllerDelegate <NSObject>
 

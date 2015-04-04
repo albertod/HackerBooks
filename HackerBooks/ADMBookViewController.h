@@ -24,6 +24,7 @@
 
 //bottom to show PDF, need to show in another controller
 
+-(IBAction)displayPDF:(id)sender;
 -(id) initWithModel:(ADMBook *) model;
 
 @end
