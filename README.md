@@ -8,7 +8,7 @@ Q: Donde guardas los datos
 
 Q: Explica la decision de diseño para implementar favoritos ?
 	
-	-Lamentablement por situaciones de tiempo y la universidad no pude
+	-Lamentablemente por situaciones de tiempo y la universidad no pude
 	terminar esta parte. Seguire trabajando en ella, y cuando este lista
 	lo hare saber.
 
