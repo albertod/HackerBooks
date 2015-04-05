@@ -18,6 +18,7 @@
 		D32A01741ACC618B00016DFC /* ADMBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D32A01721ACC618B00016DFC /* ADMBookViewController.xib */; };
 		D32A017E1ACC864900016DFC /* ADMLibraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D32A017C1ACC864900016DFC /* ADMLibraryTableViewController.m */; };
 		D32A017F1ACC864900016DFC /* ADMLibraryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D32A017D1ACC864900016DFC /* ADMLibraryTableViewController.xib */; };
+		D3ACC24A1AD11E540005DCB1 /* ADMBookViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3ACC2491AD11E540005DCB1 /* ADMBookViewController~iphone.xib */; };
 		D3B452101ACF6E25004635FE /* ADMSimplePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4520E1ACF6E25004635FE /* ADMSimplePDFViewController.m */; };
 		D3B452111ACF6E25004635FE /* ADMSimplePDFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B4520F1ACF6E25004635FE /* ADMSimplePDFViewController.xib */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		D32A017B1ACC864900016DFC /* ADMLibraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMLibraryTableViewController.h; sourceTree = "<group>"; };
 		D32A017C1ACC864900016DFC /* ADMLibraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMLibraryTableViewController.m; sourceTree = "<group>"; };
 		D32A017D1ACC864900016DFC /* ADMLibraryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADMLibraryTableViewController.xib; sourceTree = "<group>"; };
+		D3ACC2491AD11E540005DCB1 /* ADMBookViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ADMBookViewController~iphone.xib"; sourceTree = "<group>"; };
 		D3B4520D1ACF6E25004635FE /* ADMSimplePDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMSimplePDFViewController.h; sourceTree = "<group>"; };
 		D3B4520E1ACF6E25004635FE /* ADMSimplePDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMSimplePDFViewController.m; sourceTree = "<group>"; };
 		D3B4520F1ACF6E25004635FE /* ADMSimplePDFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADMSimplePDFViewController.xib; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				D32A01701ACC618B00016DFC /* ADMBookViewController.h */,
 				D32A01711ACC618B00016DFC /* ADMBookViewController.m */,
 				D32A01721ACC618B00016DFC /* ADMBookViewController.xib */,
+				D3ACC2491AD11E540005DCB1 /* ADMBookViewController~iphone.xib */,
 				D32A017B1ACC864900016DFC /* ADMLibraryTableViewController.h */,
 				D32A017C1ACC864900016DFC /* ADMLibraryTableViewController.m */,
 				D32A017D1ACC864900016DFC /* ADMLibraryTableViewController.xib */,
@@ -245,6 +248,7 @@
 				D32A01541ACB617800016DFC /* LaunchScreen.xib in Resources */,
 				D32A01511ACB617800016DFC /* Images.xcassets in Resources */,
 				D32A01741ACC618B00016DFC /* ADMBookViewController.xib in Resources */,
+				D3ACC24A1AD11E540005DCB1 /* ADMBookViewController~iphone.xib in Resources */,
 				D3B452111ACF6E25004635FE /* ADMSimplePDFViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
