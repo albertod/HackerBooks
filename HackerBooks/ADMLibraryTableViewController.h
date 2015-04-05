@@ -23,7 +23,7 @@
 
 @end
 
-@interface ADMLibraryTableViewController : UITableViewController
+@interface ADMLibraryTableViewController : UITableViewController<ADMLibraryTableViewControllerDelegate>
 
 @property (strong,nonatomic) ADMLibrary *model;
 

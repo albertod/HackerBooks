@@ -117,4 +117,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [[NSNotificationCenter defaultCenter]postNotification:n];
 }
 
+#pragma mark -ADMLibraryTableViewControllerDelegate
+
+-(void) libraryTableViewController:(ADMLibraryTableViewController *)lVC
+                     didSelectBook:(ADMBook *)book{
+    
+    //Create a BookViewControler
+    ADMBookViewController *bVC = [[ADMBookViewController alloc] initWithModel:book];
+    
+    //push into navigation controler
+    [self.navigationController pushViewController:bVC animated:YES];
+    
+
+}
+
 @end

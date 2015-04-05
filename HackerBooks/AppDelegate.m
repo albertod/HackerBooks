@@ -26,31 +26,19 @@
     
     //Remember this is initialized with the json dictionary
     ADMLibrary *library = [[ADMLibrary alloc] init];
-    ADMLibraryTableViewController *libVC = [[ADMLibraryTableViewController alloc] initWithModel:library style:UITableViewStylePlain];
+   
+    //Detect the type of screen
+    if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+        //Tablet
+        [self configureForPad:library];
+    }else{
+        //It is a phone or iphone plus
+        [self configureForPhone:library];
+    }
     
-    ADMBookViewController *bVC = [[ADMBookViewController alloc ] initWithModel:[library firstBook]];
-    
-    
-    //Navigation controllers
-    UINavigationController *lNav = [UINavigationController new];
-    UINavigationController *bNav = [UINavigationController new];
-    [lNav pushViewController:libVC animated:NO];
-    [bNav pushViewController:bVC animated:NO];
-    
-    
-    UISplitViewController *sVC = [UISplitViewController new];
-    sVC.viewControllers = @[lNav,bNav];
-    
-    //Set delegates
-    sVC.delegate = bVC;
-    libVC.delegate = bVC;
-
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [[self window] makeKeyAndVisible];
-    
-
-    self.window.rootViewController = sVC;
     
     return YES;
 }
@@ -75,6 +63,48 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void) configureForPad:(ADMLibrary *) library{
+    
+    ADMLibraryTableViewController *libVC = [[ADMLibraryTableViewController alloc] initWithModel:library style:UITableViewStylePlain];
+    
+    ADMBookViewController *bVC = [[ADMBookViewController alloc ] initWithModel:[library firstBook]];
+    
+    
+    //Navigation controllers
+    UINavigationController *lNav = [UINavigationController new];
+    UINavigationController *bNav = [UINavigationController new];
+    [lNav pushViewController:libVC animated:NO];
+    [bNav pushViewController:bVC animated:NO];
+    
+    
+    UISplitViewController *sVC = [UISplitViewController new];
+    sVC.viewControllers = @[lNav,bNav];
+    
+    //Set delegates
+    sVC.delegate = bVC;
+    libVC.delegate = bVC;
+    
+    self.window.rootViewController = sVC;
+}
+
+-(void)configureForPhone:(ADMLibrary*) library{
+    
+    //Create controler
+    ADMLibraryTableViewController *lVC = [[ADMLibraryTableViewController alloc] initWithModel:library style:UITableViewStylePlain];
+    
+    //create container
+    UINavigationController *navVC = [UINavigationController new];
+    [navVC pushViewController:lVC animated:NO];
+    
+    //assigne delegates
+    lVC.delegate = lVC;
+    
+    
+    //make it root
+    self.window.rootViewController = navVC;
+    
 }
 
 @end
