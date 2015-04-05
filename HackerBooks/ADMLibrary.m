@@ -24,12 +24,12 @@
     NSUserDefaults *ld = [NSUserDefaults standardUserDefaults];
     
     //If enter this block, it means the app is the first time is open on the device
-    if(!([ld objectForKey:@"FIRST_TIME"])){
+    if(!([ld objectForKey:@"FIR_TIME"])){
         
         //Dowload everything from the JSON soruce
         [self downloadJSON];
         //Mark the fyle system, so we know it already downloaded the file
-        [ld setObject:@"1" forKey:@"FIRST_TIME"];
+        [ld setObject:@"1" forKey:@"FIR_TIME"];
         //Syncronize the Local Directory (ld), so the key is saved
         [ld synchronize];
     }
@@ -37,9 +37,13 @@
     //Use the file manager to fetch the data
     NSFileManager *fm = [NSFileManager defaultManager];
     NSURL *localURL = [[fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]; //The JSONData was the last we saved on the local directory of the sandBox
-    
-    NSData *data = [NSData dataWithContentsOfURL:localURL];
     NSError * error;
+    
+    NSURL * url = [NSURL URLWithString:@"https://keepcodigtest.blob.core.windows.net/containerblobstest/books_readable.json"];
+    NSURL *directory = [localURL URLByAppendingPathComponent:[url lastPathComponent]];
+    
+    
+    NSData *data = [NSData dataWithContentsOfURL:directory options:NSDataReadingMappedIfSafe error:&error];
     
     if(data != nil){
         
@@ -161,9 +165,11 @@
     return [self.tagsArray objectAtIndex:index];
 }
 
--(void) downloadJSON{
+-(int) downloadJSON{
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://keepcodigtest.blob.core.windows.net/containerblobstest/books_readable.json"]];
+    NSURL *url = [NSURL URLWithString:@"https://keepcodigtest.blob.core.windows.net/containerblobstest/books_readable.json"];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLResponse *response = [NSURLResponse new ];
     NSError *error;
     
@@ -173,11 +179,56 @@
     if(data){
         
         NSFileManager *fm = [NSFileManager defaultManager];
+        NSURL *local_path = [[fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        NSArray *json_array = [NSJSONSerialization JSONObjectWithData:data
+                                                              options:kNilOptions
+                                                           error:&error];
         
+        if(json_array){
+            
+            NSURL *destination = [local_path URLByAppendingPathComponent:[url lastPathComponent]];
+            [data writeToURL:destination options:(NSDataWritingAtomic) error:&error];
+           
+            
+            for(NSDictionary *dict in json_array){
+                
+                NSURL *image_url = [NSURL URLWithString:[dict objectForKey:@"image_url"]];
+                destination = [local_path URLByAppendingPathComponent:[image_url lastPathComponent]];
+                
+                //write to Local directory
+                request = [NSURLRequest requestWithURL:image_url];
+                data = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:&response
+                                                         error:&error];
+                [data writeToURL:destination options:(NSDataWritingAtomic) error:&error]; // write image
+                
+                NSURL *pdf_url = [NSURL URLWithString:[dict objectForKey:@"pdf_url"]];
+                destination = [local_path URLByAppendingPathComponent:[pdf_url lastPathComponent]];
+               
+                //write to Local directory
+                 request = [NSURLRequest requestWithURL:pdf_url];
+                data = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:&response
+                                                         error:&error];
+                [data writeToURL:destination options:(NSDataWritingAtomic) error:&error]; // write image
+                
+            }
+            
+        }else{
+            
+            NSLog(@"Problem with json serialization %@",error);
+            return 0; //Sorry for the C syntax : )
+        }
         
+    }else{
+        NSLog(@"Problem with URL %@",error);
+        return 0;
     }
-    
+
+    return 1;
 
 }
+
+
 
 @end
